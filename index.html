@@ -10,9 +10,10 @@
 </style></head><body>
 <div id="overlay"><div class="modal"><div class="logo" id="title">BATTLE<br>ZONE 3D</div><p id="intro">Entre em uma arena 3D, enfrente adversários e tente ser o último sobrevivente. Explore casas, árvores e obstáculos enquanto a zona segura diminui.</p><button id="play">JOGAR AGORA</button><div class="hint">WASD: mover · Mouse: olhar · Clique esquerdo: atirar<br>Shift: correr · R: recarregar · Esc: liberar o mouse<br>Requer conexão com a internet para carregar os gráficos 3D.</div></div></div>
 <div id="hud"><div class="panel left"><div class="small">SOBREVIVENTES</div><div class="big lime" id="alive">9</div><div class="small">VIDA</div><div class="bar"><div class="fill" id="hp"></div></div><div class="small" style="margin-top:6px">COLETE <span id="armor">75</span>%</div><div class="bar"><div class="fill" id="arm" style="width:75%;background:#40b7ff"></div></div><div class="small" style="margin-top:6px">ELIMINAÇÕES: <b id="kills">0</b></div></div><div class="panel right"><div class="small">BATTLE ROYALE</div><div class="big lime" id="zone">ZONA SEGURA</div><div class="small" id="timer">FECHANDO EM 30s</div></div><div class="panel ammo"><div class="small">RIFLE MK-1</div><div class="big"><span id="mag" class="lime">30</span> / <span id="reserve">120</span></div><div class="small" id="reload">CLIQUE PARA ATIRAR</div></div><div id="cross"></div><div id="toast"></div><div id="help">WASD mover · Mouse olhar · Clique atirar · Shift correr · R recarregar</div></div>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
 <script type="module">
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
-import {PointerLockControls} from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/controls/PointerLockControls.js';
+import * as THREE from 'three';
+import {PointerLockControls} from 'three/addons/controls/PointerLockControls.js';
 const $=id=>document.getElementById(id);let scene,camera,renderer,controls,clock,flash,started=false,ended=false;
 let bots=[],obstacles=[],pickups=[],keys={},hp=100,armor=75,mag=30,reserve=120,kills=0,reloading=false,reloadTime=0,fireWait=0,zoneR=110,zoneTime=30;
 const rand=(a,b)=>a+Math.random()*(b-a),mat=c=>new THREE.MeshStandardMaterial({color:c,roughness:.9});
